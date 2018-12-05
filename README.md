@@ -2,6 +2,8 @@
 
 https://github.com/crazyrohila/polly-voice-over/blob/master/polly-voice-over-demo.mp4?raw=true
 
+https://github.com/crazyrohila/polly-voice-over/blob/master/voice-over-with-translation.mp4?raw=true
+
 ## Usage
 
 1. You must have aws-sdk available in the page.
