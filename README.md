@@ -27,7 +27,7 @@ btn.addEventListener('click', function() {
 
 ### How to use translated voice-over
 
-(just keep in mind to use correct lexicon for better accent.)
+(just keep in mind to use correct lexicon for better accent. mapping - https://developer.amazon.com/docs/custom-skills/speech-synthesis-markup-language-ssml-reference.html#voice)
 ```
 btn = document.getElementById('button-es');
 btn.addEventListener('click', function() {
