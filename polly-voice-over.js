@@ -3,6 +3,8 @@ function pollyVoiceOver(awsCognitoPoolId, awsRegion, styles) {
   pollyObj.polly = null;
   pollyObj.awsCognitoPoolId = awsCognitoPoolId ? awsCognitoPoolId : null;
   pollyObj.awsRegion = awsRegion ? awsRegion : 'us-east-1';
+  pollyObj.translate = null;
+
   var defaultStyle = {
     'position':'fixed',
     'bottom': '0',
@@ -19,15 +21,15 @@ function pollyVoiceOver(awsCognitoPoolId, awsRegion, styles) {
   // Main function (exposed as API) which will send request to Polly.
   pollyObj.addVoiceOver = function(text, timeOut, config) {
     if (!window.AWS) {
-      console.log('AWS sdk missing!!!');
+      console.error('AWS sdk missing!!!');
       return;
     }
     if (!pollyObj.awsCognitoPoolId) {
-      console.log('Please configure awsCognitoPoolId');
+      console.error('Please configure awsCognitoPoolId');
       return;
     }
     if (!pollyObj.awsRegion) {
-      console.log('Please configure awsRegion');
+      console.error('Please configure awsRegion');
       return;
     }
 
@@ -71,6 +73,22 @@ function pollyVoiceOver(awsCognitoPoolId, awsRegion, styles) {
           };
         }
       }, timeOut);
+    });
+  }
+
+  // Another API with translation
+  pollyObj.addTranslatedVoiceOver = function(text, language, timeOut, config) {
+    if (!language) {console.error('Language is required'); return;}
+    if (!pollyObj.translate) {
+      pollyObj.translate = new AWS.Translate({apiVersion: '2017-07-01'});
+    }
+    pollyObj.translate.translateText({
+      SourceLanguageCode: 'en',
+      TargetLanguageCode: language,
+      Text: text
+    }, function(err, data) {
+      if (err) {console.error(err, err.stack); return false;}
+      pollyObj.addVoiceOver(data['TranslatedText'], timeOut, config);
     });
   }
 

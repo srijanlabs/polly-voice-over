@@ -5,10 +5,11 @@
 <body>
 <p>!!!Polly-Voice-Over Demo!!!</p>
 <button id="button">Button</button>
+<button id="button-2">Button (Spanish)</button>
 <script src="polly-voice-over.js"></script>
 <script>
 window.onload = function() {
-  var awsCognitoPoolId = '<insert-cognito-pool-id>';
+  var awsCognitoPoolId = '<insert-pool-id>';
 
   msg = new pollyVoiceOver(awsCognitoPoolId);
   msg.addVoiceOver('This is 3 second delayed message!', 3000);
@@ -17,6 +18,12 @@ window.onload = function() {
   btn.addEventListener('click', function() {
     var css = {'color': 'indianred', 'background': '#fff'};
     msg.addVoiceOver('When we click on this button polly send this request and speaks back to you!', 0, {'styles': css, 'hideOnAudioEnd': true});
+  }, false);
+
+  btn2 = document.getElementById('button-2');
+  btn2.addEventListener('click', function() {
+    var text = 'This is translated content in spanish!';
+    msg.addTranslatedVoiceOver(text, 'es', 0, {'lexicon': 'Conchita'});
   }, false);
 }
 </script>
