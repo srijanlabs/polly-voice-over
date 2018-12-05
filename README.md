@@ -22,6 +22,8 @@ btn.addEventListener('click', function() {
 ```
 
 ### How to use translated voice-over
+
+(just keep in mind to use correct lexicon for better accent.)
 ```
 btn = document.getElementById('button-es');
 btn.addEventListener('click', function() {
@@ -47,9 +49,4 @@ msg.addVoiceOver('When we click on this button polly send this request and speak
 ```
 msg.addVoiceOver('When we click on this button polly send this request and speaks back to you!', 10, {'hideOnAudioEnd': true, 'lexicon': 'Brian'});
 // See full list of lexicons: https://developer.amazon.com/docs/custom-skills/speech-synthesis-markup-language-ssml-reference.html#voice
-```
-
-4. Translation with voice over: You can use translation also, just keep in mind to use correct lexicon for better accent.
-```
-msg.addTranslatedVoiceOver('This is translated content in spanish!', 'es', 0, {'lexicon': 'Conchita'});
 ```
