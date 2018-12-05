@@ -7,7 +7,7 @@ https://github.com/crazyrohila/polly-voice-over/blob/master/polly-voice-over-dem
 1. You must have aws-sdk available in the page.
 2. Configure CognitoPoolId which can access Polly.
 3. Initialize the object with `var msg = new pollyVoiceOver(awsCognitoPoolId);`
-4. use `addVoiceOver` function with desired text. Example:
+4. use `addVoiceOver` or `addTranslatedVoiceOver` function with desired text. Example:
 
 #### How to use with delayed input
 
@@ -22,6 +22,16 @@ msg.addVoiceOver('This is the demo about voice over with polly!', 3000);
 btn = document.getElementById('button');
 btn.addEventListener('click', function() {
   msg.addVoiceOver('When we click on this button polly send this request and speaks back to you!');
+}, false);
+```
+
+### How to use translated voice-over
+
+(just keep in mind to use correct lexicon for better accent.)
+```
+btn = document.getElementById('button-es');
+btn.addEventListener('click', function() {
+  msg.addTranslatedVoiceOver('This is translated content in spanish!', 'es', 0, {'lexicon': 'Conchita'});
 }, false);
 ```
 
