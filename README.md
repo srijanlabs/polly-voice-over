@@ -1,7 +1,11 @@
+## Demo
+
+https://github.com/crazyrohila/polly-voice-over/blob/master/polly-voice-over-demo.mp4?raw=true
+
 ## Usage
 
 1. You must have aws-sdk available in the page.
-2. Get CognitoPoolId which can access Polly.
+2. Configure CognitoPoolId which can access Polly.
 3. Initialize the object with `var msg = new pollyVoiceOver(awsCognitoPoolId);`
 4. use `addVoiceOver` function with desired text. Example:
 
