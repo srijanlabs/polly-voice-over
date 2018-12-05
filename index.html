@@ -1,0 +1,25 @@
+<html>
+<head>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.340.0.min.js"></script>
+</head>
+<body>
+<p>!!!Polly-Voice-Over Demo!!!</p>
+<button id="button">Button</button>
+<script src="polly-voice-over.js"></script>
+<script>
+window.onload = function() {
+  var awsCognitoPoolId = '<insert-cognito-pool-id>';
+
+  msg = new pollyVoiceOver(awsCognitoPoolId);
+  msg.addVoiceOver('This is 3 second delayed message!', 3000);
+
+  btn = document.getElementById('button');
+  btn.addEventListener('click', function() {
+    var css = {'color': 'indianred', 'background': '#fff'};
+    msg.addVoiceOver('When we click on this button polly send this request and speaks back to you!', 0, {'styles': css, 'hideOnAudioEnd': true});
+  }, false);
+}
+</script>
+</div>
+</body>
+</html>
