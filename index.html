@@ -4,25 +4,25 @@
 </head>
 <body>
 <p>!!!Polly-Voice-Over Demo!!!</p>
-<button id="button">Button</button>
-<button id="button-2">Button (Spanish)</button>
+<button id="button">Explain</button>
+<button id="button-2">Explicar (Spanish)</button>
 <script src="polly-voice-over.js"></script>
 <script>
 window.onload = function() {
-  var awsCognitoPoolId = '<insert-pool-id>';
+  var awsCognitoPoolId = 'us-east-1:002afa78-88d0-446a-b938-20cb21a12468';
 
   msg = new pollyVoiceOver(awsCognitoPoolId);
-  msg.addVoiceOver('This is 3 second delayed message!', 3000);
+  //msg.addVoiceOver('This is 3 second delayed message!', 3000);
 
   btn = document.getElementById('button');
   btn.addEventListener('click', function() {
     var css = {'color': 'indianred', 'background': '#fff'};
-    msg.addVoiceOver('When we click on this button polly send this request and speaks back to you!', 0, {'styles': css, 'hideOnAudioEnd': true});
+    msg.addVoiceOver('This is voice over demo. we can call this script with messages and it will show those message on screen along with voice output on given time or trigger!', 0, {'styles': css, 'hideOnAudioEnd': true});
   }, false);
 
   btn2 = document.getElementById('button-2');
   btn2.addEventListener('click', function() {
-    var text = 'This is translated content in spanish!';
+    var text = 'Esto es voz sobre demo. podemos llamar a este script con mensajes y mostrará esos mensajes en la pantalla junto con la salida de voz en un tiempo determinado o disparador';
     msg.addTranslatedVoiceOver(text, 'es', 0, {'lexicon': 'Conchita'});
   }, false);
 }
